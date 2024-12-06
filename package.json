@@ -1,0 +1,99 @@
+{
+  "name": "ansi-to-pre",
+  "version": "1.0.6",
+  "description": "convert string with ANSI color codes into a styled html pre tag",
+  "author": "Isaac Z. Schlueter <i@izs.me> (https://izs.me)",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "ansi-to-pre": "dist/esm/bin.mjs"
+  },
+  "tshy": {
+    "main": true,
+    "exports": {
+      "./package.json": "./package.json",
+      ".": "./src/index.ts"
+    }
+  },
+  "main": "./dist/commonjs/index.js",
+  "types": "./dist/commonjs/index.d.ts",
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "source": "./src/index.ts",
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "source": "./src/index.ts",
+        "types": "./dist/commonjs/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    }
+  },
+  "scripts": {
+    "prepare": "tshy",
+    "presnap": "npm run prepare",
+    "pretest": "npm run prepare",
+    "test": "tap",
+    "snap": "tap",
+    "preversion": "npm test",
+    "postversion": "npm publish",
+    "prepublishOnly": "git push origin --follow-tags",
+    "format": "prettier --write . --log-level warn",
+    "typedoc": "typedoc --tsconfig .tshy/esm.json ./src/*.ts"
+  },
+  "prettier": {
+    "experimentalTernaries": true,
+    "semi": false,
+    "printWidth": 75,
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "jsxSingleQuote": false,
+    "bracketSameLine": true,
+    "arrowParens": "avoid",
+    "endOfLine": "lf"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.1",
+    "chalk": "^5.3.0",
+    "is-fullwidth-code-point": "^4.0.0",
+    "minipass": "^7.0.4",
+    "prettier": "^3.3.2",
+    "tap": "^19.2.5",
+    "tshy": "^1.16.1",
+    "tty-strings": "^1.2.0",
+    "typedoc": "^0.26.2",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "emoji-regex": "^10.2.1",
+    "jackspeak": "^3.4.0"
+  },
+  "tap": {
+    "coverage-map": "map.js"
+  },
+  "keywords": [
+    "ansi",
+    "html",
+    "css",
+    "terminal",
+    "style",
+    "codes",
+    "cursor",
+    "virtual terminal",
+    "cli",
+    "color",
+    "chalk",
+    "parse"
+  ],
+  "license": "BlueOak-1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isaacs/ansi-to-pre.git"
+  }
+}
