@@ -1,4 +1,4 @@
-# ansi-to-pre
+# Ansi to pre.
 
 Convert a string of terminal output with ANSI escape codes into a
 `<pre>` tag with styled spans (for putting in docs and web
